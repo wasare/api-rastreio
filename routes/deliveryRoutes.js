@@ -13,7 +13,7 @@ router.post('/', async (req, res) => {
         status,
       },
     });
-    res.json(delivery);
+    res.status(201).json(delivery);
   } catch (error) {
     res.status(500).json({ error: 'Failed to create delivery' });
   }
