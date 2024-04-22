@@ -67,15 +67,21 @@ router.put('/:trackingNumber', async (req, res) => {
     }
 });
 
-
 router.delete('/:trackingNumber', async (req, res) => {
-  const { trackingNumber } = req.params;
-  const delivery = await prisma.delivery.delete({
-    where: {
-      trackingNumber
-    }
-  })
-  res.json({ msg: 'rastreio excluído', delivery})
-})
+    const {trackingNumber} = req.params;
+
+  try {
+    await prisma.delivery.delete({
+      where: {
+        trackingNumber: trackingNumber
+      }
+    });
+    res.json({msg: "delivery excluído"});
+  }
+  catch (error) {
+    res.status(400).json({error: "delivery não excluído"});
+  }
+
+});
 
 module.exports = router;
