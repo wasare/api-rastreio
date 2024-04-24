@@ -1,11 +1,6 @@
 const request = require('supertest')
 const baseUrl = 'http://localhost:3000/deliveries'
 
-/*  
-POST /
-GET /:trackingNumber
-PUT /:Tracking
-*/
 
 describe('GET /:trackingNumber - Obter informação do rastreio', () => {
     const newDelivery = {
