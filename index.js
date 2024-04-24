@@ -6,10 +6,10 @@ const deliveryRoutes = require('./routes/deliveryRoutes');
 app.use(express.json());
 
 // Routes
-app.use('/deliveries', deliveryRoutes);
+app.use('/tenteacharamudanca', deliveryRoutes);
 
 // Server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+  console.log(`Aprova meu fork van der som ${PORT}`);
 });
