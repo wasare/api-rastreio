@@ -24,7 +24,7 @@ describe('POST - cria um rastreio',  () => {
         const rastreio = await request(app).post('/deliveries').send({trackingNumber: "HY787", status: "Pedido recebido" });
 
 
-        expect(rastreio.statusCode).toBe(200);
+        expect(rastreio.statusCode).toBe(201);
         expect(rastreio.body.trackingNumber).toBe("HY787");
         expect(rastreio.body.status).toBe("Pedido recebido");
     });

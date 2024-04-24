@@ -1,7 +1,8 @@
 {
   "scripts": {
     "test": "jest",
-    "start": "node index.js"
+    "start": "node index.js",
+    "prepare": "husky"
   },
   "devDependencies": {
     "express": "^4.19.2",
