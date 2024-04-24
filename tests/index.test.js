@@ -1,6 +1,13 @@
 const request = require('supertest')
 const baseUrl = 'http://localhost:3000/deliveries'
 
+const { PrismaClient } = require('@prisma/client');
+const prisma = new PrismaClient();
+
+const resetarAutoIncremento = async () => {
+    await prisma.$executeRaw`ALTER SEQUENCE delivery_id_seq RESTART WITH 20;`;
+    // alterar o valor do id para qual você quiser que seja recomeçado.
+}
 
 describe('GET /:trackingNumber - Obter informação do rastreio', () => {
     const newDelivery = {
@@ -14,6 +21,7 @@ describe('GET /:trackingNumber - Obter informação do rastreio', () => {
 
     afterAll(async () => {
         await request(baseUrl).delete(`/${newDelivery.trackingNumber}`)
+        await resetarAutoIncremento()
     })
 
     it('Deve retornar o delivery 10', async () => {
@@ -37,6 +45,7 @@ describe('POST / - Criando um rastreio', () => {
 
     afterAll(async () => {
         await request(baseUrl).delete(`/${newDelivery.trackingNumber}`)
+        await resetarAutoIncremento()
     })
 
     it('Deve retornar o objeto criado', async () => {
