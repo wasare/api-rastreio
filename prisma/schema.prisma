@@ -14,6 +14,6 @@ model Delivery {
   id              Int      @id @default(autoincrement())
   trackingNumber  String @unique
   status          String
-  service         String
+  service         String?
   createdAt       DateTime @default(now())
 }
